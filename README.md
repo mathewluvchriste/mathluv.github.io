@@ -1,138 +1,398 @@
-export default function InteractiveCV() {
-  return (
-    <div className="min-h-screen bg-black text-white font-sans">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center py-20 px-6">
-        <img
-          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400"
-          alt="Profile"
-          className="w-36 h-36 rounded-full border-4 border-white shadow-2xl mb-6 object-cover"
-        />
+<!DOCTYPE html>
+<html lang="en">
 
-        <h1 className="text-5xl font-bold mb-3">Joseph</h1>
-        <p className="text-xl text-gray-300 mb-6">
-          Electrical Engineering Student | AI Enthusiast | Developer
-        </p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <div className="flex gap-4 flex-wrap justify-center">
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            className="bg-white text-black px-5 py-3 rounded-2xl font-semibold hover:scale-105 transition"
-          >
-            GitHub
-          </a>
+  <title>Mathew Luv Christe | AI Portfolio</title>
 
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            className="border border-white px-5 py-3 rounded-2xl hover:bg-white hover:text-black transition"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </section>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-      {/* About */}
-      <section className="max-w-5xl mx-auto px-6 py-12">
-        <div className="bg-zinc-900 rounded-3xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold mb-4">About Me</h2>
+    body {
+      background: #050505;
+      color: white;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
 
-          <p className="text-gray-300 leading-8 text-lg">
-            I am an enthusiastic Electrical Engineering student passionate
-            about artificial intelligence, embedded systems, game development,
-            and software engineering. I enjoy creating innovative projects such
-            as body detection systems, AI-based games, and machine learning
-            applications.
-          </p>
-        </div>
-      </section>
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      z-index: 1000;
+    }
 
-      {/* Skills */}
-      <section className="max-w-5xl mx-auto px-6 py-12">
-        <h2 className="text-3xl font-bold mb-8 text-center">Skills</h2>
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      list-style: none;
+    }
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            "Python",
-            "Arduino",
-            "Machine Learning",
-            "C++",
-            "HTML & CSS",
-            "Computer Vision",
-          ].map((skill) => (
-            <div
-              key={skill}
-              className="bg-zinc-900 rounded-2xl p-6 text-center text-lg font-semibold hover:scale-105 transition shadow-lg"
-            >
-              {skill}
-            </div>
-          ))}
-        </div>
-      </section>
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: bold;
+    }
 
-      {/* Projects */}
-      <section className="max-w-5xl mx-auto px-6 py-12">
-        <h2 className="text-3xl font-bold mb-8 text-center">Projects</h2>
+    nav a:hover {
+      color: cyan;
+    }
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-zinc-900 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition">
-            <h3 className="text-2xl font-bold mb-3">
-              AI Boxing Detection Game
-            </h3>
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+      background:
+        radial-gradient(circle at top, rgba(0,255,255,0.2), transparent 40%),
+        #050505;
+    }
 
-            <p className="text-gray-300 leading-7">
-              A boxing game using body tracking and computer vision technology
-              to detect player movements in real-time.
-            </p>
-          </div>
+    .hero-content {
+      max-width: 900px;
+    }
 
-          <div className="bg-zinc-900 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition">
-            <h3 className="text-2xl font-bold mb-3">
-              Hand Gesture Recognition
-            </h3>
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid cyan;
+      box-shadow: 0 0 30px cyan;
+      margin-bottom: 30px;
+    }
 
-            <p className="text-gray-300 leading-7">
-              A machine learning project capable of recognizing hand gestures
-              using a webcam and AI classification.
-            </p>
-          </div>
-        </div>
-      </section>
+    h1 {
+      font-size: 70px;
+      margin-bottom: 10px;
+    }
 
-      {/* Education */}
-      <section className="max-w-5xl mx-auto px-6 py-12">
-        <div className="bg-zinc-900 rounded-3xl p-8 shadow-xl">
-          <h2 className="text-3xl font-bold mb-4">Education</h2>
+    .typing {
+      color: cyan;
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
 
-          <p className="text-xl text-gray-300">
-            Bachelor of Electrical Engineering
-          </p>
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      background: cyan;
+      color: black;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: bold;
+      margin: 10px;
+      transition: 0.3s;
+    }
 
-          <p className="text-gray-400 mt-2">
-            University Name • 2023 - Present
-          </p>
-        </div>
-      </section>
+    .btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px cyan;
+    }
 
-      {/* Contact */}
-      <section className="max-w-5xl mx-auto px-6 py-12 pb-20">
-        <div className="bg-white text-black rounded-3xl p-10 text-center shadow-2xl">
-          <h2 className="text-4xl font-bold mb-4">Contact Me</h2>
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 30px;
+    }
 
-          <p className="text-lg mb-6">
-            Interested in collaboration, projects, or internships?
-          </p>
+    .section-title {
+      text-align: center;
+      font-size: 45px;
+      margin-bottom: 50px;
+      color: cyan;
+    }
 
-          <a
-            href="mailto:yourmail@email.com"
-            className="bg-black text-white px-6 py-4 rounded-2xl inline-block font-semibold hover:scale-105 transition"
-          >
-            Send Email
-          </a>
-        </div>
-      </section>
+    .card {
+      background: #111;
+      border-radius: 25px;
+      padding: 40px;
+      margin-top: 20px;
+      transition: 0.3s;
+      border: 1px solid #222;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .skill {
+      background: cyan;
+      color: black;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: #111;
+      padding: 30px;
+      border-radius: 25px;
+      transition: 0.3s;
+      border: 1px solid #222;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0,255,255,0.4);
+    }
+
+    .project-card h3 {
+      margin-bottom: 15px;
+      color: cyan;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #777;
+    }
+
+    @media(max-width:768px) {
+      h1 {
+        font-size: 45px;
+      }
+
+      .typing {
+        font-size: 20px;
+      }
+
+      nav ul {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+
+    <div class="hero-content">
+
+      <!-- GANTI FOTO -->
+      <img src="yourphoto.jpg" class="profile-img">
+
+      <h1>Mathew Luv Christe</h1>
+
+      <div class="typing">
+        Artificial Intelligence Student
+      </div>
+
+      <p>
+        Nanjing University of Information Science and Technology
+      </p>
+
+      <br>
+
+      <a href="https://github.com" class="btn">
+        GitHub
+      </a>
+
+      <a href="#contact" class="btn">
+        Contact Me
+      </a>
+
     </div>
-  );
-}
-# mathluv.github.io
+
+  </div>
+
+  <section id="about">
+
+    <h2 class="section-title">About Me</h2>
+
+    <div class="card">
+
+      <p>
+        I am Mathew Luv Christe, an Artificial Intelligence student at
+        Nanjing University of Information Science and Technology.
+        I was born on May 26, 2006 and come from Indonesia.
+      </p>
+
+      <br>
+
+      <p>
+        I am passionate about artificial intelligence,
+        computer vision, machine learning, embedded systems,
+        and interactive technology development.
+      </p>
+
+      <br>
+
+      <p>
+        I am also a recipient of the Excellent Scholarship
+        with 100% full scholarship coverage.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section id="skills">
+
+    <h2 class="section-title">Languages & Skills</h2>
+
+    <div class="card">
+
+      <h3>Languages</h3>
+
+      <br>
+
+      <div class="skills">
+        <div class="skill">Indonesian — Native</div>
+        <div class="skill">English — Intermediate</div>
+        <div class="skill">Chinese — Intermediate</div>
+      </div>
+
+      <br><br>
+
+      <h3>Technical Skills</h3>
+
+      <br>
+
+      <div class="skills">
+        <div class="skill">Python</div>
+        <div class="skill">Machine Learning</div>
+        <div class="skill">Computer Vision</div>
+        <div class="skill">Arduino</div>
+        <div class="skill">C++</div>
+        <div class="skill">AI Development</div>
+        <div class="skill">Hand Gesture Recognition</div>
+        <div class="skill">Game Development</div>
+        <div class="skill">HTML & CSS</div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="projects">
+
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects">
+
+      <div class="project-card">
+        <h3>Hand Gesture Recognition</h3>
+
+        <p>
+          AI-based computer vision system capable of detecting
+          and classifying hand gestures in real-time using webcam input.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>AI Boxing Detection Game</h3>
+
+        <p>
+          Interactive boxing game using body tracking and
+          motion detection technology powered by AI.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Body Detection System</h3>
+
+        <p>
+          Human body detection system designed for interactive
+          gaming and motion analysis applications.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Machine Learning Applications</h3>
+
+        <p>
+          Development of AI and machine learning solutions
+          for image recognition and smart systems.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="research">
+
+    <h2 class="section-title">Research Topic</h2>
+
+    <div class="card">
+
+      <h3>DE Water Research Website</h3>
+
+      <br>
+
+      <p>
+        Research and development website focused on water-related
+        environmental technology and intelligent monitoring systems.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section id="contact">
+
+    <h2 class="section-title">Contact</h2>
+
+    <div class="card">
+
+      <p>Email : yourmail@gmail.com</p>
+
+      <br>
+
+      <p>GitHub : github.com/yourusername</p>
+
+      <br>
+
+      <p>LinkedIn : linkedin.com/in/yourname</p>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Mathew Luv Christe | AI Portfolio
+  </footer>
+
+</body>
+
+</html>
